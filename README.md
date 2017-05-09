@@ -1,0 +1,2 @@
+# Beauty
+Beauty (Training Project)

@@ -1,0 +1,131 @@
+<% provide :title, t("pages.home.beauty") %>
+<div>
+  <div>
+    <%= link_to image_tag("1.jpg") %>
+    <div>
+      <h3>Elizabeth Arden</h3>
+      <p><%= t "pages.home.every" %></p>
+    </div>
+  </div>
+  <div>
+    <%= link_to image_tag("2.jpg") %>
+    <div>
+      <h3>Audrey Hepburn</h3>
+      <p><%= t "pages.home.makeup" %></p>
+    </div>
+  </div>
+  <div>
+    <%= link_to image_tag("3.jpg") %>
+    <div>
+      <h3>Coco Chanel</h3>
+      <p><%= t "pages.home.be" %></p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h3><%= t "pages.home.the_beauty" %></h3>
+  <p><em><%= t "pages.about.love" %></em></p>
+  <p><%= t "pages.home.content_goal" %></p>
+  <p><%= t "pages.home.content_if" %></p>
+  <br>
+  <div>
+    <div>
+      <p><strong>Thảo Huyền</strong></p><br>
+      <%= link_to image_tag("4.jpg",width: "255", height: "255") %>
+    </div>
+    <div>
+      <p><strong>Huyền Lê</strong></p><br>
+      <%= link_to image_tag("7.jpg", width: "255", height: "255") %>
+    </div>
+    <div>
+      <p><strong>Lê Thảo</strong></p><br>
+      <%= link_to image_tag("8.jpg", width: "255", height: "255") %>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div>
+    <h3><%= t "pages.home.event" %></h3>
+    <p><%= t "pages.home.let" %><br><%= t "pages.home.remember" %></p>
+    <ul>
+      <li><%= t "pages.home.may" %>
+        <span><%= t "pages.home.full" %></span></li>
+      <li><%= t "pages.home.june" %>
+        <span><%= t "pages.home.full" %></span></li>
+      <li><%= t "pages.home.july" %><span>3</span></li>
+    </ul>
+  </div>
+  <div>
+    <%= link_to image_tag("6.jpg", width: "400", height: "300") %>
+    <p><strong><%= t "pages.home.skin" %></strong></p>
+    <p><%= t "pages.home.date_15" %></p>
+    <button><%= t "pages.home.registry" %></button>
+  </div>
+  <div>
+    <%= link_to image_tag("6.jpg", width: "400", height: "300") %>
+    <p><strong><%= t "pages.home.challenge" %></strong></p>
+    <p><%= t "pages.home.date_22" %></p>
+    <button><%= t "pages.home.registry" %></button>
+  </div>
+  <div>
+    <%= link_to image_tag("6.jpg", width: "400", height: "300") %>
+    <p><strong><%= t "pages.home.month" %></strong></p>
+    <p><%= t "pages.home.date_15" %></p>
+    <button><%= t "pages.home.registry" %></button>
+  </div>
+</div>
+
+<div>
+  <h3><%= t "pages.home.contact" %></h3>
+  <p><em><%= t "pages.home.love_you" %></em></p>
+  <div>
+    <div>
+      <p><%= t "pages.home.feed" %></p>
+      <p><span></span>
+        <%= t "pages.home.hn" %></p>
+      <p><span></span>
+        <%= t "pages.home.phone" %> +00 1515151515</p>
+      <p><span></span>
+        <%= t "pages.home.email" %> mail@mail.com</p>
+    </div>
+    <div>
+      <div>
+        <div>
+          <input id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div>
+          <input id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+      <br>
+      <div>
+          <button><%= t "pages.home.send" %></button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h3><%= t "static_pages.home.from" %></h3>
+  <ul>
+    <li><a>Chang</a></li>
+    <li><a>Michelle</a></li>
+    <li><a>Pony</a></li>
+  </ul>
+
+  <div>
+    <div>
+      <h2>Chang Makeup </h2>
+      <p><%= t "pages.home.chang_content" %></p>
+    </div>
+    <div>
+      <h2>Michelle Phan</h2>
+      <p><%= t "pages.home.michelle_content" %></p>
+    </div>
+    <div>
+      <h2>PONY Makeup</h2>
+      <p><%= t "pages.home.pony_content" %></p>
+    </div>
+  </div>
+</div>

@@ -20,4 +20,61 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  pages:
+    home:
+      beauty: "Beauty"
+      every: "Every woman has the right to be beautiful."
+      makeup: "Makeup can make you look better but it does not really help
+        if you are ugly from the inside.
+        Unless you eat the whole pile of makeup."
+      be: "Be with someone who ruins your lipstick - not your mascara."
+      the_beauty: "THE BEAUTY"
+      love: "We love beauty!"
+      content_goal: "The goal of Beauty is to become the leading online trading
+        and trading site in Vietnam. The site allows buyers and sellers to
+        connect and transact easily and securely in a convenient
+        and clear environment."
+      content_if: "If you have any questions regarding your advertisement,
+        please see the guidelines and rules for online advertising on our site.
+        You can also check our help page to contact us."
+      review: "Review 5 star"
+      top: "Top 10 best seller"
+      join: "Join since March 14 2017"
+      contact: "Contact"
+      love_you: "We love you!"
+      feed: "---Give me your feedback---"
+      hn: "Hanoi, VN"
+      phone: "Phone:"
+      email: "Email:"
+      send: "Send"
+      from: "From The Beauty Blogger"
+      chang_content: "Hey guys, I have a huge love for lipsticks
+        and I really want to share it with you"
+      michelle_content: "Just another old soul dreamer with childlike faith.
+        Teaching and inspiring everyone to become their own best
+        makeup artist :) So sit back, enjoy and let's play with makeup!"
+      pony_content: "Beauty is in the eyes of the viewer.
+        Each person has his own standards of beauty, somebody can be normal
+        in the eyes of one person but gorgeous in the eyes of others.
+        Beauty is very important to a woman but it is even better
+        if it matches with personality."
+      event: "EVENT DATES"
+      let: "Let's play makeup with me."
+      remember: "Remember to register to join our event!"
+      may: "May"
+      june: "June"
+      july: "July"
+      full: "Full !"
+      skin: "Skincare tips"
+      date_15: "Saturday 15 July 2015"
+      registry: "Registry"
+      challenge: "Beauty Challenge"
+      date_22: "Saturday 22 July 2015"
+      month: "Month Favorites"
+      date_30: "Sunday 30 July 2015"
+      seat: "Seat registration"
+      people: "People"
+      send_to: "Send To"
+      cancel: "Cancel"
+      need: "Need"
+      help: "help?"

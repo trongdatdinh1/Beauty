@@ -1,0 +1,40 @@
+<% provide :title, t("pages.home.beauty") %>
+<div id="about" class="container text-center">
+  <h3><%= t "pages.home.the_beauty" %></h3>
+  <p><em><%= t "pages.home.love" %></em></p>
+  <p><%= t "pages.home.content_goal" %></p>
+  <p><%= t "pages.home.content_if" %></p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Thảo Huyền</strong></p><br>
+      <%= link_to image_tag("4.jpg", class: "img-circle person", width: "255",
+        height: "255", href: "#demo", data: { toggle: "collapse"}) %>
+      <div id="demo" class="collapse">
+        <p><%= t "pages.home.review" %></p>
+        <p><%= t "pages.home.top" %></p>
+        <p><%= t "pages.home.join" %></p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Huyền Lê</strong></p><br>
+      <%= link_to image_tag("7.jpg", class: "img-circle person",width: "255",
+        height: "255", href: "#demo2", data: { toggle: "collapse"}) %>
+      <div id="demo2" class="collapse">
+        <p><%= t "pages.home.review" %></p>
+        <p><%= t "pages.home.top" %></p>
+        <p><%= t "pages.home.join" %></p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Lê Thảo</strong></p><br>
+      <%= link_to image_tag("8.jpg", class: "img-circle person",width: "255",
+        height: "255", href: "#demo3", data: { toggle: "collapse"}) %>
+      <div id="demo3" class="collapse">
+        <p><%= t "pages.home.review" %></p>
+        <p><%= t "pages.home.top" %></p>
+        <p><%= t "pages.home.join" %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,186 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+$light-gray: #777;
+$black: #111;
+$dark-white: #f1f1f1;
+$white: #fff;
+$medium-gray: #555;
+$light-black: #2d2d30;
+$gray74: #bdbdbd;
+$gray20: #333;
+$medium-black: #29292c;
+$black20: #000;
+$white20: #d5d5d5;
+$white-smoke: #f5f5f5;
+
+body {
+  color: $light-gray;
+}
+
+h3,
+h4 {
+  color: $black;
+  font-size: 20px;
+  letter-spacing: 10px;
+  margin: 10px 0 30px;
+}
+
+.container {
+  padding: 80px 120px;
+}
+
+.person {
+  border: 10px solid transparent;
+  height: 80%;
+  margin-bottom: 25px;
+  opacity: .8;
+  width: 80%;
+
+  &:hover {
+    border-color: $white;
+  }
+}
+
+.carousel-inner img {
+  margin: auto;
+  width: 100%;
+}
+
+.carousel-caption h3 {
+  color: $white !important;
+}
+
+@media (max-width: 600px) {
+  .carousel-caption {
+    display: none;
+  }
+}
+
+.bg-1 {
+  background: $light-black;
+  color: $gray74;
+}
+
+.bg-1 h3 {color: $white;}
+
+.bg-1 p {font-style: italic;}
+
+.list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.list-group-item:last-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.thumbnail {
+  border: 0;
+  border-radius: 0;
+  padding: 0 0 15px;
+
+  p {
+    color: $medium-gray;
+    margin-top: 15px;
+  }
+}
+
+.btn {
+  background-color: $gray20;
+  border-radius: 0;
+  color: $white;
+  padding: 10px 20px;
+  transition: .2s;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: $white;
+  border: 1px solid $gray20;
+  color: $black20;
+}
+
+.modal-header,
+h4,
+.close {
+  background-color: $gray20;
+  color: $white !important;
+  font-size: 30px;
+  text-align: center;
+}
+
+.modal-header,
+.modal-body {
+  padding: 40px 50px;
+}
+
+.nav-tabs li a {
+  color: $light-gray;
+}
+
+.navbar {
+  background-color: $light-black;
+  border: 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px !important;
+  letter-spacing: 4px;
+  margin-bottom: 0;
+  opacity: .9;
+}
+
+.navbar li a,
+.navbar .navbar-brand {
+  color: $white20 !important;
+}
+
+.navbar-nav li a:hover {
+  color: $white !important;
+}
+
+.navbar-nav .active a {
+  background-color: $medium-black !important;
+  color: $white !important;
+}
+
+.navbar-default
+.navbar-toggle {
+  border-color: transparent;
+}
+
+.open .dropdown-toggle {
+  background-color: $medium-gray !important;
+  color: $white;
+}
+
+.dropdown-menu li a {
+  color: $black20 !important;
+
+  &:hover {
+    background-color: $medium-black !important;
+  }
+}
+
+footer {
+  background-color: $light-black;
+  color: $white-smoke;
+  padding: 32px;
+
+  a {
+    color: $white-smoke;
+
+    &:hover {
+      color: $light-gray;
+      text-decoration: none;
+    }
+  }
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+textarea {
+  resize: none;
+}

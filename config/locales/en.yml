@@ -20,6 +20,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  title: "Makeup everyday"
+  layouts:
+    header:
+      beauty: "BEAUTY"
+      home: "HOME"
+      about: "ABOUT"
+      event: "EVENT"
+      contact: "CONTACT"
+      login: "LOGIN"
+      more: "MORE"
+      signup: "Sign up"
+      help: "Help"
+      ad: "Advertisement"
+    footer:
+      to_top: "TO TOP"
+      slogan: "If you're sad, add more lipstick and attack !"
   pages:
     home:
       beauty: "Beauty"

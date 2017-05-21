@@ -21,6 +21,7 @@
 
 en:
   title: "Makeup everyday"
+  some_thing_went_wrong: "Some thing went wrong"
   layouts:
     header:
       beauty: "BEAUTY"
@@ -94,4 +95,3 @@ en:
       cancel: "Cancel"
       need: "Need"
       help: "help?"
-

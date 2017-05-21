@@ -10,7 +10,12 @@
   </head>
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
     <%= render "layouts/header" %>
-    <%= yield %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="aler alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
     <%= render "layouts/footer" %>
   </body>
 </html>

@@ -22,6 +22,27 @@
 en:
   title: "Makeup everyday"
   some_thing_went_wrong: "Some thing went wrong"
+  posts:
+    new:
+      add: "Add post"
+      new_post: "New Post"
+      create: "Create"
+    edit:
+      edit: "Edit post"
+      edit_post: "Edit Post"
+      save: "Save"
+    show:
+      back: "Back"
+      edit: "Edit"
+      delete: "Delete"
+      sure: "Are you sure?"
+    post:
+      by: "by"
+      read: "Read more"
+    index:
+      post: "POST"
+    post_form:
+      descrip: "Description"
   layouts:
     header:
       beauty: "BEAUTY"

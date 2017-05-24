@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= t "posts.index.post" %> (<%= @user.posts.count %>)</h1>
+  <h1><%= t "posts.index.post" %></h1>
   <%= link_to t("posts.new.add"), new_post_path, class: "btn btn-custom" %>
   <div class="row">
     <%= render @posts  %>

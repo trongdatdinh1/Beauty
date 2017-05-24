@@ -3,7 +3,12 @@ class PagesController < ApplicationController
 
   def show
     if valid_page?
-      @posts = Post.all.order_by_created
+      @posts =
+        if params[:tag]
+          Post.all.tagged_with(params[:tag]).order_by_created
+        else
+          Post.all.order_by_created
+        end
       render "pages/#{params[:page]}"
     else
       render file: "public/404.html", status: :not_found

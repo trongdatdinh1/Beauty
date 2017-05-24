@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_taggable
   belongs_to :user
   scope :order_by_created, (->{order created_at: :desc})
   validates :user, presence: true

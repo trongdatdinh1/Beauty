@@ -1,0 +1,6 @@
+<% provide :title, t("posts.new.add") %>
+<% provide :button_text, t("posts.new.create") %>
+<div class="container">
+  <h1 class="text-center"><%= t "posts.new.new_post" %></h1><br/>
+  <%= render "posts/post_form", post: @post  %>
+</div>

@@ -5,12 +5,8 @@ class PostsController < ApplicationController
 
   def index
     @posts =
-      if user_signed_in?
-        if params[:tag]
-          current_user.posts.tagged_with(params[:tag]).order_by_created
-        else
-          current_user.posts.order_by_created
-        end
+      if user_signed_in? && params[:tag].nil?
+        current_user.posts.order_by_created
       else
         Post.all.tagged_with(params[:tag]).order_by_created
       end
@@ -29,6 +25,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @post.comments
   end
 
   def edit

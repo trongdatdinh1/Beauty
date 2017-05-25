@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get "/pages/*page" => "pages#show", as: :page
 
   resources :posts
+
+  get "tags/:tag", to: "posts#index", as: :tag
 end

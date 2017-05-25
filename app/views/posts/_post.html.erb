@@ -7,8 +7,13 @@
       <h2><%= link_to post.title, post_path(post.id) %></h2>
         <%= t "posts.post.by" %>
       <span><%= link_to post.user.profile.name, user_path(post.user_id) %></span>
+      <p><%= t "posts.show.tag" %>
+        <%= raw post.tag_list.map { |t| link_to t, tag_path(t),
+          class: "btn-sm btn-default" }.join(' ') %>
+      </p>
       <p><%= truncate post.content, length: 100 %></p>
-      <p><%= link_to t("posts.post.read"), post_path(post.id), class: "btn btn-custom" %></p>
+      <p><%= link_to t("posts.post.read"), post_path(post.id),
+        class: "btn btn-custom" %></p>
     </div>
   </div>
 </div>

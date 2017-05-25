@@ -12,6 +12,10 @@
           <h6 class="timestamp"><span class="glyphicon glyphicon-hourglass"></span>
             <%= @post.created_at.to_s %>
           </h6>
+          <p><%= t "posts.show.tag" %>
+            <%= raw @post.tag_list.map { |t| link_to t, tag_path(t),
+              class: "btn-sm btn-default" }.join(' ') %>
+          </p>
         </div>
         <p class="post-content"><%= @post.content %></p>
       </div>

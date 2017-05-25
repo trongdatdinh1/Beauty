@@ -36,6 +36,7 @@ en:
       edit: "Edit"
       delete: "Delete"
       sure: "Are you sure?"
+      tag: "Tags: "
     post:
       by: "by"
       read: "Read more"

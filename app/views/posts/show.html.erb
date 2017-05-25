@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5">
-      <%= image_tag @post.post_img.url(:post_show), class: "post-image" %>
+      <div class="row">
+        <%= image_tag @post.post_img.url(:post_show), class: "post-image" %>
+      </div>
     </div>
     <div class="col-md-7">
       <div class="post">
@@ -17,6 +19,7 @@
               class: "btn-sm btn-default" }.join(' ') %>
           </p>
         </div>
+        <%= render "vote_form", post: @post %>
         <p class="post-content"><%= @post.content %></p>
       </div>
     </div>

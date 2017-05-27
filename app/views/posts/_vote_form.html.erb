@@ -1,0 +1,15 @@
+<div id="vote_form">
+  <% if user_signed_in? %>
+    <% if current_user.voted_down_on? post %>
+      <%= link_to post_votes_path(post), method: :post, remote: true do %>
+        <span class="glyphicon glyphicon-heart-empty"></span>
+      <% end %>
+    <% else %>
+      <%= link_to post_vote_path(post,1), method: :delete, remote: true do %>
+        <span class="glyphicon glyphicon-heart"></span>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= t "posts.show.like" %> <%= post.get_upvotes.size %>
+</div>
+

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root "pages#show", page: "home"
   get "/pages/*page" => "pages#show", as: :page
 
-  resources :posts
+  resources :posts do
+    resources :votes, only: [:create, :destroy]
+  end
 
   get "tags/:tag", to: "posts#index", as: :tag
 end

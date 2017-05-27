@@ -20,6 +20,7 @@ gem "bootstrap-sass", "3.3.6"
 gem "paperclip"
 gem "cancancan", "~> 1.10"
 gem "acts-as-taggable-on", "~> 4.0"
+gem "acts_as_votable"
 
 group :development, :test do
   gem "byebug", platform: :mri

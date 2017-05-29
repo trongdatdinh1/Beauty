@@ -277,15 +277,18 @@ h2 {
   }
 
   .post-content {
+    border-bottom: 1px solid $white20;
     border-top: 1px solid $white20;
     font-size: 1.05em;
     line-height: 1.5;
     margin-bottom: 15px;
     margin-top: 15px;
+    padding: 10px 0;
   }
 
   .timestamp {
     color: $light-gray;
+    font-size: 12px;
   }
 
 }

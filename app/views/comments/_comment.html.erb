@@ -1,0 +1,10 @@
+<div>
+  <%= link_to comment.user.profile.name, user_path(comment.user_id) %>:
+  <%= comment.content %></br>
+  <span class="timestamp"><%= comment.created_at.to_s %></span>
+    <% if can? :destroy, comment %>
+      <%= link_to t("posts.show.delete"), comment_path(comment), method: :delete,
+        data: {confirm: t("posts.show.sure")} %>
+    <% end %>
+  </br></br>
+</div>

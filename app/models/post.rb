@@ -1,10 +1,13 @@
 class Post < ApplicationRecord
   acts_as_taggable
+
+  has_many :comments, dependent: :destroy
   belongs_to :user
+
   scope :order_by_created, (->{order created_at: :desc})
   validates :user, presence: true
   validates :title, presence: true, length: {maximum: 50}
-  validates :content, presence: true, length: {maximum: 140}
+  validates :content, presence: true
   validates :post_img, attachment_presence: true
   has_attached_file :post_img, styles: {post_index: "250x350>",
     post_show: "325x475>"}, default_url: "/images/:style/missing.png"

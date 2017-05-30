@@ -1,0 +1,16 @@
+<div class="review">
+  <div class="review-rating" data-score="<%= review.star %>"></div>
+  <%= review.user.profile.name %>
+  <%= review.content %>
+  <div class="links btn-group">
+    <% if can? :update, review %>
+      <%= link_to t("posts.show.edit"), edit_user_review_path(review.user.id, review),
+        class: "btn btn-custom" %>
+    <% end %>
+    <% if can? :destroy, review %>
+      <%= link_to t("posts.show.delete"), user_review_path(review.user.id, review),
+        method: :delete, data: {confirm: t("posts.show.sure")},
+        class: "btn btn-custom" %>
+    <% end %>
+  </div>
+</div>

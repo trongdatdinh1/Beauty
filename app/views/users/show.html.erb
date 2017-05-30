@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="col-md-6">
       <div class="well well-sm">
         <div class="row">
           <div class="col-sm-6 col-md-4">
@@ -28,6 +28,23 @@
               <%= @user.profile.job %></i>
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="reviews">
+        <h2><%= t "users.show.average" %></h2>
+        <div class="average-review-rating" data-score=<%= @average_review %>></div>
+        <span class="number-of-reviews"><%= t "users.show.base" %> <%= @reviews.count %>
+          <%= t "users.show.reviews" %></span>
+        <h1><%= t "users.show.reviews" %></h1>
+        <% if @reviews.any? %>
+          <%= render @reviews %>
+        <% end %>
+        <div>
+          <% if user_signed_in? %>
+            <%= link_to t("users.show.add"), new_user_review_path(@user), class: "btn-custom2" %>
+          <% end %>
         </div>
       </div>
     </div>

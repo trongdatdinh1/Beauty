@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525074844) do
+ActiveRecord::Schema.define(version: 20170529063319) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20170525074844) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "star"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "reviewed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id", "reviewed_id"], name: "index_reviews_on_user_id_and_reviewed_id", unique: true
   end
 
   create_table "taggings", force: :cascade do |t|

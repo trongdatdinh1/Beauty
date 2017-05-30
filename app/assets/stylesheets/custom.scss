@@ -296,3 +296,19 @@ h2 {
 .post-form {
   @include background-tile;
 }
+
+.new-review-form,
+.edit-review-form {
+  @include background-tile;
+}
+
+.reviews {
+  @include background-tile;
+  margin-top: 40px;
+
+  .review {
+    border-bottom: 1px solid $white20;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+}

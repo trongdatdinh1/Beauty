@@ -15,4 +15,10 @@ Rails.application.routes.draw do
   get "tags/:tag", to: "posts#index", as: :tag
 
   resources :comments, only: [:create, :destroy]
+
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+    resources :posts, only: [:index, :destroy]
+  end
+
 end

@@ -27,6 +27,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments
+    impressionist @post
   end
 
   def edit

@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  is_impressionable
   acts_as_taggable
 
   has_many :comments, dependent: :destroy

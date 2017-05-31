@@ -1,0 +1,33 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <caption><%= caption %></caption>
+    <thead>
+      <tr>
+        <th><%= t "admin.posts.index.title" %></th>
+        <th><%= t "admin.posts.index.by" %></th>
+        <th><%= t "admin.posts.index.likes" %></th>
+        <th><%= t "admin.posts.index.views" %></th>
+        <th><%= t "admin.posts.index.created" %></th>
+        <th><%= t "admin.posts.index.delete" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.title, post %></td>
+          <td><%= post.user.profile.name %></td>
+          <td><%= post.get_likes.size %></td>
+          <td><%= post.impressionist_count %></td>
+          <td><%= post.created_at %></td>
+          <td>
+            <% if can? :destroy, post %>
+              <%= link_to t("admin.posts.index.delete"),
+                admin_post_path(post), method: :delete,
+                data: {confirm: t("admin.posts.index.sure?")} %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

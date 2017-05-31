@@ -1,0 +1,38 @@
+<h1><%= t "admin.posts.index.posts" %></h1>
+<div class="sidebar-nav">
+  <div class="well">
+    <ul class="nav nav-list">
+      <li class="nav-header"><%= t "admin.posts.index.admin_menu" %></li>
+      <li>
+        <%= link_to t("admin.users.index.users"), admin_users_path %>
+      </li>
+      <li>
+        <%= link_to t("admin.users.index.posts"), admin_posts_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <%= paginate @posts %>
+  <%= render "posts_table", posts: @posts,
+    caption: t("admin.posts.index.post_list") %>
+  <%= paginate @posts %>
+  <%= render "posts_table", posts: @supports.most_views_today,
+    caption: t("admin.posts.index.most_views_today") %>
+  <%= render "posts_table", posts: @supports.most_views_week_ago,
+    caption: t("admin.posts.index.most_views_week_ago") %>
+  <%= render "posts_table", posts: @supports.most_views_month_ago,
+    caption: t("admin.posts.index.most_views_month_ago") %>
+</div>
+<div class="row">
+  <center><h2><%= t "last_7_days" %></h2></center>
+  <%= line_chart @supports.last_7_days, colors: [Settings.color.dark_blue] %>
+</div>
+<div class="row">
+  <center><h2><%= t "last_30_days" %></h2></center>
+  <%= line_chart @supports.last_30_days, colors: [Settings.color.indian_red] %>
+</div>
+<div class="row">
+  <center><h2><%= t "last_6_months" %></h2></center>
+  <%= line_chart @supports.last_6_months, colors: [Settings.color.dark_red] %>
+</div>

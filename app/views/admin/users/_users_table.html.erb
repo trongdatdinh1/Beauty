@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <caption><%= caption %></caption>
+    <thead>
+      <tr>
+        <th><%= t "admin.users.index.user" %></th>
+        <th><%= t "admin.users.index.name" %></th>
+        <th><%= t "admin.users.index.posts" %></th>
+        <th><%= t "admin.users.index.delete" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= link_to user.email, user %></td>
+          <td><%= user.profile.name %></td>
+          <td><%= user.posts.count %></td>
+          <td>
+            <% if can? :destroy, user  %>
+              <%= link_to t("admin.users.index.delete"),
+                admin_user_path(user), method: :delete,
+                data: {confirm: t("admin.users.index.sure?")} %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

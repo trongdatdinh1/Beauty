@@ -27,3 +27,7 @@ config/secrets.yml
 npm-debug.log
 
 public/system/
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

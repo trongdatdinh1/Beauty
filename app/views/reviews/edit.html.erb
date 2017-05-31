@@ -1,0 +1,7 @@
+<% provide :button_text, t("reviews.edit.save") %>
+<div class="col-md-6 col-md-offset-3">
+  <div class="edit-review-form">
+    <h1><%= t "reviews.edit.edit" %></h1>
+    <%= render "review_form", user: current_user, review: @review %>
+  </div>
+</div>

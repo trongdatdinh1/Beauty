@@ -22,6 +22,23 @@
 en:
   title: "Makeup everyday"
   some_thing_went_wrong: "Some thing went wrong"
+  rated: "You have rated success"
+  unselected: "You have rated this user or unselected star"
+  reviews:
+    form:
+      rating: "Rating"
+    edit:
+      edit: "Edit Review"
+      save: "Save"
+    new:
+      new: "New Review"
+      add: "Add"
+  users:
+    show:
+      average: "Average Rating"
+      add: "Add Review"
+      reviews: "Reviews"
+      base: "Based on"
   comments:
     comment:
       delete: "Delete"

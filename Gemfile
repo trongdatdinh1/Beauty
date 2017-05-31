@@ -21,6 +21,12 @@ gem "paperclip"
 gem "cancancan", "~> 1.10"
 gem "acts-as-taggable-on", "~> 4.0"
 gem "acts_as_votable"
+gem "faker"
+gem "kaminari"
+gem "chartkick"
+gem "groupdate"
+gem "impressionist"
+gem "config"
 
 group :development, :test do
   gem "byebug", platform: :mri

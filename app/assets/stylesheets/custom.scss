@@ -13,6 +13,8 @@ $medium-black: #29292c;
 $black20: #000;
 $white20: #d5d5d5;
 $white-smoke: #f5f5f5;
+$noti-not-read: #e9ebee;
+$noti-not-read-hover: #f6f7f9;
 
 body {
   color: $light-gray;
@@ -290,7 +292,6 @@ h2 {
     color: $light-gray;
     font-size: 12px;
   }
-
 }
 
 .post-form {
@@ -316,4 +317,34 @@ h2 {
 .image-edit-profile {
   height: 300px;
   width: 100%;
+}
+
+.notification-dropdown li {
+  border-bottom: 1px solid $light-gray;
+  height: 25px;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.notification input {
+  background: $white;
+  border: 0;
+}
+
+.unread {
+  background-color: $noti-not-read;
+
+  a:hover,
+  a:focus,
+  a:active {
+    background-color: $noti-not-read-hover;
+  }
+}
+
+.scroll {
+  height: 450px;
+  overflow: scroll;
+  width: 400px;
 }

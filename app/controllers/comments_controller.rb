@@ -2,10 +2,13 @@ class CommentsController < ApplicationController
   load_and_authorize_resource
 
   def create
-    @comment = Comment.create! comment_params
     respond_to do |format|
-      format.html{redirect_to :back}
-      format.js
+      if @comment.save
+        NotificationServices::CreateNotification.new(comment: @comment,
+          current_user_id: current_user.id).create_notification
+        format.html{redirect_to :back}
+        format.js
+      end
     end
   end
 

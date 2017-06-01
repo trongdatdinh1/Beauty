@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   is_impressionable
   acts_as_taggable
 
+  has_many :notifications, as: :notificationable
   has_many :comments, dependent: :destroy
   belongs_to :user
 

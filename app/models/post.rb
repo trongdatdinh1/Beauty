@@ -15,4 +15,13 @@ class Post < ApplicationRecord
   validates_attachment_content_type :post_img, content_type: /\Aimage\/.*\Z/
 
   acts_as_votable
+  searchkick word_middle: [:title, :content]
+
+  def search_data
+    {
+      title: title,
+      content: content,
+      tag: tag_list
+    }
+  end
 end

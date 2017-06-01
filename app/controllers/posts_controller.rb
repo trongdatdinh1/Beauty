@@ -5,10 +5,15 @@ class PostsController < ApplicationController
 
   def index
     @posts =
-      if user_signed_in? && params[:tag].nil?
-        current_user.posts.order_by_created
+      if user_signed_in? && params[:tag].nil? && params[:query].nil?
+        current_user.posts.order_by_created.page(params[:page]).per(20)
+      elsif params[:tag]
+        Post.all.tagged_with(params[:tag])
+          .order_by_created.page(params[:page]).per(20)
+      elsif params[:query]
+        Post.search params[:query], page: params[:page]
       else
-        Post.all.tagged_with(params[:tag]).order_by_created
+        Post.all.order_by_created.page(params[:page]).per(20)
       end
   end
 

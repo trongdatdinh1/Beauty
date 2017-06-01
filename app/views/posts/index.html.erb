@@ -3,5 +3,6 @@
   <%= link_to t("posts.new.add"), new_post_path, class: "btn btn-custom" %>
   <div class="row">
     <%= render @posts  %>
+    <%= paginate @posts %>
   </div>
 </div>

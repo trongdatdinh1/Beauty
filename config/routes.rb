@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     resources :reviews, except: [:index, :show]
   end
 
-  root "pages#show", page: "home"
-  get "/pages/*page" => "pages#show", as: :page
+  root "pages#show", static: "home"
+  get "/pages/*static" => "pages#show", as: :page
 
   resources :posts do
     resources :votes, only: [:create, :destroy]

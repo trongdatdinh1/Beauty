@@ -13,12 +13,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit :account_update do |user_params|
       user_params.permit :email, :password, :password_confirmation,
-        :current_password, profile_attributes: [:name,
+        :current_password, profile_attributes: [:id, :name,
         :age, :address, :phone_number, :job, :avatar]
     end
     devise_parameter_sanitizer.permit :sign_up do |user_params|
       user_params.permit :email, :password, :password_confirmation,
-        profile_attributes: [:name, :age,
+        profile_attributes: [:id, :name, :age,
         :address, :phone_number, :job, :avatar]
     end
   end

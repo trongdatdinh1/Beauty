@@ -28,6 +28,7 @@ gem "groupdate"
 gem "impressionist"
 gem "config"
 gem "searchkick"
+gem "closure_tree"
 
 group :development, :test do
   gem "byebug", platform: :mri

@@ -21,4 +21,5 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :destroy]
   end
 
+  resources :notifications, only: [:index, :show]
 end

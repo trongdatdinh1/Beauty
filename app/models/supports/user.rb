@@ -14,4 +14,32 @@ class Supports::User
     @last_6_months ||= User.group_by_month(:created_at,
       format: "%b %Y", last: 6).count
   end
+
+  def reviews
+    @reviews = Review.where reviewed_id: @user.id
+  end
+
+  def average_review
+    @average_review =
+      if reviews
+        reviews.average(:star).round(2)
+      else
+        0
+      end
+  end
+
+  def review_of user
+    review = check_review user, @user
+    @review =
+      if review
+        review
+      else
+        Review.new
+      end
+  end
+
+  def check_review reviewer, reviewed
+    @check_review ||= Review.find_by user_id: reviewer.id,
+      reviewed_id: reviewed.id
+  end
 end

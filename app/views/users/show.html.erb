@@ -1,52 +1,71 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="well well-sm">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <%= image_tag "http://placehold.it/380x500",
-              alt: @user.profile.avatar, class: "img-rounded img-responsive" %>
-          </div>
-          <div class="col-sm-6 col-md-8">
-            <h4>
-              <%= @user.profile.name %>
-            </h4>
-            <small><%= @user.profile.address %>
-              <i class="glyphicon glyphicon-map-marker"></i>
-            </small>
-            <p>
-              <%= t "age" %> <i class="glyphicon glyphicon-hourglass"></i>
-              <%= @user.profile.age %>
-              <br/>
-              <%= t "email" %> <i class="glyphicon glyphicon-envelope"></i>
-              <%= @user.email %>
-              <br/>
-              <%= t "phone_number" %> <i class="glyphicon glyphicon-phone"></i>
-              <%= @user.profile.phone_number %>
-              <br/>
-              <%= t "job" %> <i class="glyphicon glyphicon-asterisk">
-              <%= @user.profile.job %></i>
-            </p>
-          </div>
-        </div>
+<div class="row user-profile">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 " >
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @user.profile.name %></h3>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="reviews">
-        <h2><%= t "users.show.average" %></h2>
-        <div class="average-review-rating" data-score=<%= @average_review %>></div>
-        <span class="number-of-reviews"><%= t "users.show.base" %> <%= @reviews.count %>
-          <%= t "users.show.reviews" %></span>
-        <h1><%= t "users.show.reviews" %></h1>
-        <% if @reviews.any? %>
-          <%= render @reviews %>
-        <% end %>
-        <div>
-          <% if user_signed_in? %>
-            <%= link_to t("users.show.add"), new_user_review_path(@user), class: "btn-custom2" %>
-          <% end %>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-3 col-lg-3" align="center">
+            <%= image_tag @user.profile.avatar.url,
+              class: "img-circle img-responsive" %>
+          </div>
+          <div class="col-md-9 col-lg-9">
+            <table class="table table-user-information">
+              <tbody>
+                <tr>
+                  <td><%= t "users.show.age" %></td>
+                  <td><%= @user.profile.age %></td>
+                </tr>
+                <tr>
+                  <td><%= t "users.show.phone_number" %></td>
+                  <td><%= @user.profile.phone_number %></td>
+                </tr>
+                <tr>
+                  <td><%= t "users.show.address" %></td>
+                  <td><%= @user.profile.address %></td>
+                </tr>
+                <tr>
+                  <td><%= t "users.show.job" %></td>
+                  <td><%= @user.profile.job %></td>
+                </tr>
+                <tr>
+                  <td><%= t "users.show.average" %></td>
+                  <td><div class="average-review-rating"
+                    data-score=<%= @supports.average_review %>></div></td>
+                </tr>
+                <tr>
+                  <td><span class="number-of-reviews">
+                    <%= t "users.show.base" %> </td>
+                  <td><%= @supports.reviews.count %>
+                    <%= t "users.show.reviews" %></span></td>
+                </tr>
+              </tbody>
+            </table>
+            <% if user_signed_in? %>
+              <% unless @supports.review_of current_user %>
+                <li><%= link_to t("users.show.add"), "",
+                  "data-toggle": "modal", "data-target": "#review-modal" %>
+                </li>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="reviews">
+      <h1><%= t "users.show.reviews" %></h1>
+      <% if @supports.reviews.any? %>
+        <%= render @supports.reviews %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% if user_signed_in? %>
+  <%= render "reviews/review_modal", user: @user,
+    review: @supports.review_of(current_user)  %>
+<% end %>

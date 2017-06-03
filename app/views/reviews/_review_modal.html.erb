@@ -1,0 +1,33 @@
+  <div class="modal fade" id="review-modal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          <h4 class="modal-title"><%= t "reviews.form.rating" %></h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for [user, review] do |f| %>
+            <div id="rating-form"></div>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :reviewed_id, value: user.id %>
+            <div class="form-group">
+              <%= f.label :content %>
+              <%= f.text_field :content,
+                autofocus: true, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <div class="actions">
+                <%= f.submit t("reviews.submit"), class: "btn form-control" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            <%= t "close" %>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>

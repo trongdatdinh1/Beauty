@@ -5,43 +5,22 @@ $light-gray: #777;
 $black: #111;
 $dark-white: #f1f1f1;
 $white: #fff;
-$medium-gray: #555;
-$light-black: #2d2d30;
+$medium-gray: #9b30ff;
+$light-black: #9b30ff;
 $gray74: #bdbdbd;
 $gray20: #333;
-$medium-black: #29292c;
+$medium-black: #9b30ff;
 $black20: #000;
 $white20: #d5d5d5;
 $white-smoke: #f5f5f5;
 $noti-not-read: #e9ebee;
 $noti-not-read-hover: #f6f7f9;
+$gray94: #f0f0f0;
+$fandango: #a12c87;
 
 body {
+  background: $gray94;
   color: $light-gray;
-}
-
-h3,
-h4 {
-  color: $black;
-  font-size: 20px;
-  letter-spacing: 10px;
-  margin: 10px 0 30px;
-}
-
-.container {
-  padding: 80px 0;
-}
-
-.person {
-  border: 10px solid transparent;
-  height: 80%;
-  margin-bottom: 25px;
-  opacity: .8;
-  width: 80%;
-
-  &:hover {
-    border-color: $white;
-  }
 }
 
 .carousel-inner img {
@@ -56,6 +35,108 @@ h4 {
 @media (max-width: 600px) {
   .carousel-caption {
     display: none;
+  }
+}
+
+.image-logo {
+  width: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .image-logo {
+    width: 50px;
+  }
+}
+
+
+.modal-header,
+h4,
+.close {
+  background-color: $fandango;
+  color: $white !important;
+  font-size: 30px;
+  text-align: center;
+}
+
+.modal-header,
+.modal-body {
+  padding: 40px 50px;
+}
+
+.modal-body,
+.modal-footer {
+  background-color: $gray94;
+}
+
+.my-navbar ul li {
+  text-align: center;
+}
+
+.replies {
+  margin-left: 50px;
+}
+
+.sold {
+  background: url('closed.png') no-repeat;
+}
+
+.watermark {
+  opacity: .45;
+  z-index: -1;
+}
+
+.btn {
+  background-color: $fandango;
+  border-radius: 0;
+  color: $white;
+
+  transition: .2s;
+}
+
+
+.btn:hover,
+.btn:focus {
+  background-color: $white;
+  border: 1px solid $gray20;
+  color: $fandango;
+}
+
+.open .dropdown-toggle {
+  color: $white;
+}
+
+.dropdown-menu li a {
+
+  &:hover {
+    background-color: $fandango !important;
+    color: $white;
+  }
+}
+
+.user-profile {
+  margin-top: 100px;
+}
+
+.review {
+  .review-content {
+    font-size: 20px;
+  }
+
+  .review-by-user {
+    margin-left: 15px;
+  }
+}
+
+.person {
+  border: 10px solid transparent;
+  height: 80%;
+  margin-bottom: 25px;
+  opacity: .8;
+  width: 80%;
+
+  &:hover {
+    border-color: $white;
   }
 }
 
@@ -81,86 +162,9 @@ h4 {
 .thumbnail {
   border: 0;
   border-radius: 0;
-  padding: 0 0 15px;
 
   p {
     color: $medium-gray;
-    margin-top: 15px;
-  }
-}
-
-.btn {
-  background-color: $gray20;
-  border-radius: 0;
-  color: $white;
-  padding: 10px 20px;
-  transition: .2s;
-}
-
-.btn:hover,
-.btn:focus {
-  background-color: $white;
-  border: 1px solid $gray20;
-  color: $black20;
-}
-
-.modal-header,
-h4,
-.close {
-  background-color: $gray20;
-  color: $white !important;
-  font-size: 30px;
-  text-align: center;
-}
-
-.modal-header,
-.modal-body {
-  padding: 40px 50px;
-}
-
-.nav-tabs li a {
-  color: $light-gray;
-}
-
-.navbar {
-  background-color: $light-black;
-  border: 0;
-  font-family: Montserrat, sans-serif;
-  font-size: 11px !important;
-  letter-spacing: 4px;
-  margin-bottom: 0;
-  opacity: .9;
-}
-
-.navbar li a,
-.navbar .navbar-brand {
-  color: $white20 !important;
-}
-
-.navbar-nav li a:hover {
-  color: $white !important;
-}
-
-.navbar-nav .active a {
-  background-color: $medium-black !important;
-  color: $white !important;
-}
-
-.navbar-default
-.navbar-toggle {
-  border-color: transparent;
-}
-
-.open .dropdown-toggle {
-  background-color: $medium-gray !important;
-  color: $white;
-}
-
-.dropdown-menu li a {
-  color: $black20 !important;
-
-  &:hover {
-    background-color: $medium-black !important;
   }
 }
 
@@ -254,7 +258,6 @@ h2 {
 
 .show {
   border-bottom: 1px solid $white20;
-  padding: 15px 0;
 
   .post-show {
     @include background-tile;
@@ -308,16 +311,7 @@ h2 {
   @include background-tile;
 }
 
-.reviews {
-  @include background-tile;
-  margin-top: 40px;
 
-  .review {
-    border-bottom: 1px solid $white20;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-  }
-}
 
 .image-edit-profile {
   height: 300px;
@@ -352,17 +346,4 @@ h2 {
   height: 400px;
   overflow: scroll;
   width: 350px;
-}
-
-.replies {
-  margin-left: 50px;
-}
-
-.sold {
-  background: url('closed.png') no-repeat;
-}
-
-.watermark {
-  opacity: .45;
-  z-index: -1;
 }

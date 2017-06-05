@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601144856) do
+ActiveRecord::Schema.define(version: 20170605022209) do
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
@@ -74,13 +74,14 @@ ActiveRecord::Schema.define(version: 20170601144856) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "user_id"
     t.string   "post_img_file_name"
     t.string   "post_img_content_type"
     t.integer  "post_img_file_size"
     t.datetime "post_img_updated_at"
+    t.integer  "status",                default: 0, null: false
   end
 
   create_table "profiles", force: :cascade do |t|

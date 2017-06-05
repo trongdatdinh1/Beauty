@@ -30,8 +30,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
-    @comments = @post.comments
+    @supports = Supports::Post.new @post
     impressionist @post
   end
 
@@ -53,6 +52,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit :title, :content, :post_img, :tag_list
+    params.require(:post).permit :title,
+      :content, :post_img, :tag_list, :status
   end
 end

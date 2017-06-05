@@ -1,9 +1,12 @@
 class Supports::Post
   attr_reader :post, :posts
 
-  def initialize post, posts
+  def initialize post
     @post = post
-    @posts = posts
+  end
+
+  def posts
+    @posts ||= Post.all
   end
 
   def last_7_days
@@ -19,20 +22,28 @@ class Supports::Post
   end
 
   def most_views_today
-    @posts
+    posts
       .sort_by{|post| post.impressionist_count start_date: 1.day.ago}
       .reverse.first(10)
   end
 
   def most_views_week_ago
-    @posts
+    posts
       .sort_by{|post| post.impressionist_count start_date: 7.days.ago}
       .reverse.first(10)
   end
 
   def most_views_month_ago
-    @posts
+    posts
       .sort_by{|post| post.impressionist_count start_date: 1.month.ago}
       .reverse.first(10)
+  end
+
+  def comment
+    @comment = Comment.new
+  end
+
+  def comments_tree
+    @comments = @post.comments
   end
 end

@@ -62,6 +62,7 @@ en:
       like: "Likes"
       compose: "Compose new comment..."
       comment: "Comment"
+      change: "Change"
     post:
       by: "by"
       read: "Read more"

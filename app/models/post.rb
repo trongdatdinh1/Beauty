@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  enum status: [:opened, :closed]
+
   is_impressionable
   acts_as_taggable
 

@@ -40,7 +40,8 @@ class Ability
 
   def user_role user
     can [:destroy, :update, :edit], [Post, Review], user_id: user.id
-    can [:create, :read], [Post, Comment, Review]
+    can [:create, :read], [Comment, Post, Review]
     can :destroy, Comment, user_id: user.id
+    cannot :create, Comment, post: {status: 1}
   end
 end

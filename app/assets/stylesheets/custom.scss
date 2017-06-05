@@ -357,3 +357,12 @@ h2 {
 .replies {
   margin-left: 50px;
 }
+
+.sold {
+  background: url('closed.png') no-repeat;
+}
+
+.watermark {
+  opacity: .45;
+  z-index: -1;
+}

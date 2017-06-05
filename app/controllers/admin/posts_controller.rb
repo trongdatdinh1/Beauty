@@ -2,7 +2,7 @@ class Admin::PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @supports = Supports::Post.new @post, @posts
+    @supports = Supports::Post.new @post
     @posts = @posts.page params[:page]
   end
 

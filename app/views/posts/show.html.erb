@@ -3,7 +3,10 @@
     <div class="col-md-4">
       <div class="row">
         <center>
-          <%= image_tag @post.post_img.url(:post_show), class: "post-image" %>
+          <div class="row <%= "sold" if @post.closed? %>">
+            <%= image_tag @post.post_img.url(:post_show),
+              class: "post-image #{'watermark' if @post.closed?}" %>
+          </div>
           <div class="links btn-group">
             <% if can? :update, @post  %>
               <%= link_to t("posts.show.back"),
@@ -38,6 +41,7 @@
           <p class="post-tag"><%= t "posts.show.tag" %>
             <%= raw tag_list @post %>
           </p>
+          <%= render "close_post", post: @post %>
         </div>
         <%= render "vote_form", post: @post %>
         <p class="post-content"><%= simple_format @post.content %></p>
@@ -48,9 +52,9 @@
   <div class="row">
     <% if user_signed_in? %>
       <%= render "comments/comment_form", post: @post, parent_id: nil,
-        comment_new: @comment %>
+        comment_new: @supports.comment %>
     <% end %>
-    <%= comments_tree_for @comments.hash_tree(limit_depth: 3), @post,
-      @comment %>
+    <%= comments_tree_for @supports.comments_tree.hash_tree(limit_depth: 3),
+      @post, @supports.comment %>
   </div>
 </div>

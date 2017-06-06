@@ -1,12 +1,14 @@
 <div class="show">
   <div class="row">
-    <div class="col-md-5">
-      <%= link_to image_tag(post.post_img.url, class: "post-show"), post_path(post) %>
+    <div class="col-md-5 <%= "sold" if post.closed? %>">
+      <%= link_to image_tag(post.post_img.url,
+        class: "post-show #{'watermark' if post.closed?}"), post_path(post) %>
     </div>
     <div class="col-md-7">
       <h2><%= link_to post.title, post_path(post.id) %></h2>
         <%= t "posts.post.by" %>
-      <span><%= link_to post.user.profile.name, user_path(post.user_id) %></span>
+      <span><%= link_to post.user.profile.name,
+        user_path(post.user_id) %></span>
       <p><%= t "posts.show.tag" %>
         <%= raw tag_list post %>
       </p>

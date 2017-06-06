@@ -1,0 +1,4 @@
+<%= form_for post do |f| %>
+  <%= f.hidden_field :status, value: change_post_status(post) %>
+  <%= f.submit t("posts.show.change"), class: "btn" %>
+<% end %>

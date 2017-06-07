@@ -43,7 +43,7 @@
         <%= render "close_post", post: @post %>
       </div>
       <%= render "vote_form", post: @post %>
-      <p class="post-content"><%= simple_format @post.content %></p>
+      <p class="post-content"><%= raw @post.content %></p>
     </div>
   </div>
 </div>

@@ -29,6 +29,7 @@ gem "impressionist"
 gem "config"
 gem "searchkick"
 gem "closure_tree"
+gem "ckeditor"
 
 group :development, :test do
   gem "byebug", platform: :mri

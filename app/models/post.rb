@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   validates :content, presence: true
   validates :post_img, attachment_presence: true
   has_attached_file :post_img, styles: {post_index: "250x350>",
-    post_show: "325x475>"}, default_url: "/images/:style/missing.png"
+    post_show: "147x196>"}, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :post_img, content_type: /\Aimage\/.*\Z/
 
   acts_as_votable

@@ -30,6 +30,7 @@ gem "config"
 gem "searchkick"
 gem "closure_tree"
 gem "ckeditor"
+gem "toastr-rails"
 
 group :development, :test do
   gem "byebug", platform: :mri

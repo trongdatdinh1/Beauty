@@ -9,12 +9,21 @@
       "data-turbolinks-track": "reload" %>
   </head>
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-    <%= render "layouts/header" %>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="aler alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      <%= yield %>
+    <div class="container-fluid">
+      <%= render "layouts/header" %>
+      <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+
+          <%= yield %>
+          <div class="row">
+            <% flash.each do |message_type, message| %>
+              <div class="aler alert-<%= message_type %>"><%= message %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+      </div>
     </div>
     <%= render "layouts/footer" %>
   </body>

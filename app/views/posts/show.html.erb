@@ -1,60 +1,58 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="row">
-        <center>
-          <div class="row <%= "sold" if @post.closed? %>">
-            <%= image_tag @post.post_img.url(:post_show),
-              class: "post-image #{'watermark' if @post.closed?}" %>
-          </div>
-          <div class="links btn-group">
-            <% if can? :update, @post  %>
-              <%= link_to t("posts.show.back"),
-                posts_path, class: "btn btn-custom" %>
-              <%= link_to t("posts.show.edit"), edit_post_path(@post),
-                class: "btn btn-custom" %>
-            <% else %>
-              <%= link_to t("posts.show.back"), root_path,
-                class: "btn btn-custom" %>
-            <% end %>
-            <% if can? :destroy, @post %>
-              <%= link_to t("posts.show.delete"),
-                post_path(@post), method: :delete,
-                data: {confirm: t("posts.show.sure")},
-                class: "btn btn-custom" %>
-            <% end %>
-          </div>
-        </center>
-      </div>
-    </div>
-    <div class="col-md-8">
-      <div class="post">
-        <div>
-          <h3 class="post-title"><%= @post.title %></h3>
-          <h5 class="post-owner"><span class="glyphicon glyphicon-user"></span>
-            <%= link_to @post.user.profile.name, user_path(@post.user_id) %>
-          </h5>
-          <h6 class="timestamp">
-            <span class="glyphicon glyphicon-hourglass"></span>
-            <%= @post.created_at.to_s %>
-          </h6>
-          <p class="post-tag"><%= t "posts.show.tag" %>
-            <%= raw tag_list @post %>
-          </p>
-          <%= render "close_post", post: @post %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="row">
+      <center>
+        <div class="row <%= "sold" if @post.closed? %>">
+          <%= image_tag @post.post_img.url(:post_show),
+            class: "post-image #{'watermark' if @post.closed?}" %>
         </div>
-        <%= render "vote_form", post: @post %>
-        <p class="post-content"><%= simple_format @post.content %></p>
-      </div>
+        <div class="links btn-group">
+          <% if can? :update, @post  %>
+            <%= link_to t("posts.show.back"),
+              posts_path, class: "btn btn-custom" %>
+            <%= link_to t("posts.show.edit"), edit_post_path(@post),
+              class: "btn btn-custom" %>
+          <% else %>
+            <%= link_to t("posts.show.back"), root_path,
+              class: "btn btn-custom" %>
+          <% end %>
+          <% if can? :destroy, @post %>
+            <%= link_to t("posts.show.delete"),
+              post_path(@post), method: :delete,
+              data: {confirm: t("posts.show.sure")},
+              class: "btn btn-custom" %>
+          <% end %>
+        </div>
+      </center>
     </div>
   </div>
-  <hr/>
-  <div class="row">
-    <% if user_signed_in? %>
-      <%= render "comments/comment_form", post: @post, parent_id: nil,
-        comment_new: @supports.comment %>
-    <% end %>
-    <%= comments_tree_for @supports.comments_tree.hash_tree(limit_depth: 3),
-      @post, @supports.comment %>
+  <div class="col-md-8">
+    <div class="post">
+      <div>
+        <h3 class="post-title"><%= @post.title %></h3>
+        <h5 class="post-owner"><span class="glyphicon glyphicon-user"></span>
+          <%= link_to @post.user.profile.name, user_path(@post.user_id) %>
+        </h5>
+        <h6 class="timestamp">
+          <span class="glyphicon glyphicon-hourglass"></span>
+          <%= @post.created_at.to_s %>
+        </h6>
+        <p class="post-tag"><%= t "posts.show.tag" %>
+          <%= raw tag_list @post %>
+        </p>
+        <%= render "close_post", post: @post %>
+      </div>
+      <%= render "vote_form", post: @post %>
+      <p class="post-content"><%= simple_format @post.content %></p>
+    </div>
   </div>
+</div>
+<hr/>
+<div class="row">
+  <% if user_signed_in? %>
+    <%= render "comments/comment_form", post: @post, parent_id: nil,
+      comment_new: @supports.comment %>
+  <% end %>
+  <%= comments_tree_for @supports.comments_tree.hash_tree(limit_depth: 3),
+    @post, @supports.comment %>
 </div>

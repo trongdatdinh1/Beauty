@@ -26,7 +26,9 @@ en:
   rated: "You have rated success"
   unselected: "You have rated this user or unselected star"
   not_found: "Notification not found"
+  close: "Close"
   reviews:
+    submit: "Submit"
     form:
       rating: "Rating"
     edit:
@@ -41,6 +43,11 @@ en:
       add: "Add Review"
       reviews: "Reviews"
       base: "Based on"
+      edit: "Edit Review"
+      age: "Age:"
+      phone_number: "Phone number:"
+      address: "Address:"
+      job: "Job"
   comments:
     comment:
       delete: "Delete"
@@ -84,6 +91,7 @@ en:
       post: "Post"
       profile: "Profile"
       logout: "Logout"
+      search: "Search"
     footer:
       to_top: "TO TOP"
       slogan: "If you're sad, add more lipstick and attack !"

@@ -6,6 +6,9 @@
         <th><%= t "admin.users.index.user" %></th>
         <th><%= t "admin.users.index.name" %></th>
         <th><%= t "admin.users.index.posts" %></th>
+        <th><%= t "admin.users.index.sign_in_count" %></th>
+        <th><%= t "admin.users.index.current_sign_in_at" %></th>
+        <th><%= t "admin.users.index.last_sign_in_at" %></th>
         <th><%= t "admin.users.index.delete" %></th>
       </tr>
     </thead>
@@ -15,6 +18,9 @@
           <td><%= link_to user.email, user %></td>
           <td><%= user.profile.name %></td>
           <td><%= user.posts.count %></td>
+          <td><%= user.sign_in_count%></td>
+          <td><%= user.current_sign_in_at%></td>
+          <td><%= user.last_sign_in_at%></td>
           <td>
             <% if can? :destroy, user  %>
               <%= link_to t("admin.users.index.delete"),

@@ -1,8 +1,8 @@
 <div class="row user-profile">
-  <div class="col-md-7">
+  <div class="col-md-9">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="panel panel-info">
+        <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title"><%= @user.profile.name %></h3>
           </div>
@@ -57,18 +57,41 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="reviews">
-          <h1><%= t "users.show.reviews" %></h1>
-          <% if @supports.reviews.any? %>
-            <%= render @supports.reviews %>
-          <% end %>
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab11" data-toggle="tab">
+              <%= t "users.show.reviews" %></a></li>
+            <li><a href="#tab12" data-toggle="tab">Posts</a></li>
+            <li><a href="#tab13" data-toggle="tab">Comments</a></li>
+            <li><a href="#tab14" data-toggle="tab">Reviewed</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab11">
+              <div class="reviews">
+                <% if @supports.reviews.any? %>
+                  <%= render @supports.reviews %>
+                <% end %>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab12">
+              <div class="col-md-12">
+                <%= render @user.posts %>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab13">
+              <div class="col-md-12">
+                <%= render @supports.user_commented %>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab14">
+              <div class="col-md-12">
+                <%= render @supports.reviewed_users %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-  </div>
-  <div class="col-md-5">
-    <%= render "user_profile_post", posts: @user.posts %>
   </div>
 </div>
 <% if user_signed_in? %>

@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  load_resource :user
   load_and_authorize_resource
 
   def new

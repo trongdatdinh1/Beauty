@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_resource :post
   load_and_authorize_resource
 
   def create
@@ -13,7 +14,7 @@ class CommentsController < ApplicationController
       NotificationServices::CreateNotification.new(comment: @comment,
         current_user_id: current_user.id).create_notification
       respond_to do |format|
-        format.html{redirect_to :back}
+        format.html{redirect_to @post}
         format.js
       end
     end

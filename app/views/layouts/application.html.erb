@@ -7,13 +7,15 @@
       "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application",
       "data-turbolinks-track": "reload" %>
+    <%= stylesheet_link_tag "application",
+      "https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css" %>
   </head>
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
     <div class="container-fluid">
       <%= render "layouts/header" %>
       <div class="row main">
-        <div class="col-sm-1 col-md-1 col-lg-1"></div>
-        <div class="col-sm-10 col-md-10 col-lg-10">
+        <div class="col-sm-1 col-md-1 col-lg-2"></div>
+        <div class="col-sm-10 col-md-10 col-lg-8">
           <script type="text/javascript">
             <% flash.each do |message_type, message| %>
               toastr['<%= message_type.gsub("notice", "info") %>']('<%= message %>');
@@ -21,9 +23,9 @@
           </script>
           <%= yield %>
         </div>
-        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+        <div class="col-sm-1 col-md-1 col-lg-2"></div>
       </div>
+      <%= render "layouts/footer" %>
     </div>
-    <%= render "layouts/footer" %>
   </body>
 </html>

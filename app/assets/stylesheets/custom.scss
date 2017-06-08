@@ -6,7 +6,7 @@ $black: #111;
 $dark-white: #f1f1f1;
 $white: #fff;
 $medium-gray: #9b30ff;
-$light-black: #9b30ff;
+$united: #d34615;
 $gray74: #bdbdbd;
 $gray20: #333;
 $medium-black: #9b30ff;
@@ -17,6 +17,7 @@ $noti-not-read: #e9ebee;
 $noti-not-read-hover: #f6f7f9;
 $gray94: #f0f0f0;
 $fandango: #a12c87;
+$gray92: #ebebeb;
 
 body {
   background: $gray94;
@@ -24,7 +25,7 @@ body {
 }
 
 .main {
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .carousel-inner img {
@@ -42,6 +43,12 @@ body {
   }
 }
 
+@media (min-width: 1700px) {
+  .col-item {
+    height: 425px;
+  }
+}
+
 .image-logo {
   width: 100%;
 }
@@ -52,13 +59,8 @@ body {
   }
 }
 
-.modal-header,
-h4,
-.close {
-  background-color: $fandango;
-  color: $white !important;
-  font-size: 30px;
-  text-align: center;
+.image-user {
+  width: 50px;
 }
 
 .modal-header,
@@ -88,19 +90,8 @@ h4,
   z-index: -1;
 }
 
-.btn {
-  background-color: $fandango;
-  border-radius: 0;
-  color: $white;
-
-  transition: .2s;
-}
-
-.btn:hover,
-.btn:focus {
-  background-color: $white;
-  border: 1px solid $gray20;
-  color: $fandango;
+.comment-form {
+  margin-left: 50px;
 }
 
 .open .dropdown-toggle {
@@ -113,6 +104,38 @@ h4,
     color: $white;
   }
 }
+
+ul {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.messages-list {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.message-sent {
+  position: relative;
+  background-color: #D9EDF7;
+  border-color: #BCE8F1;
+  margin: 5px 20px;
+  padding: 10px;
+  float: right;
+}
+
+
+.message-received {
+  background-color: #F1F0F0;
+  border-color: #EEEEEE;
+  margin: 5px 20px;
+  padding: 10px;
+  float: left;
+}
+
+
 
 .user-profile {
   margin-top: 100px;
@@ -136,8 +159,9 @@ h4,
 }
 
 .show-post {
+  border: 1px solid $gray92;
+
   .post-image {
-    height: 300px;
     min-height: 100%;
     width: 100%;
   }
@@ -181,7 +205,7 @@ h4,
 }
 
 .bg-1 {
-  background: $light-black;
+  background: $united;
   color: $gray74;
 }
 
@@ -202,17 +226,17 @@ h4,
 .thumbnail {
   border: 0;
   border-radius: 0;
+  min-width: 100%;
 
   p {
     color: $medium-gray;
   }
 }
 
-footer {
-  background-color: $light-black;
-  color: $white-smoke;
-  padding: 32px;
 
+footer {
+  background-color: $united;
+  color: $white-smoke;
   a {
     color: $white-smoke;
 
@@ -244,39 +268,10 @@ h2 {
   color: $black;
   font-family: "Ubuntu", sans-serif;
   font-weight: 300;
-  letter-spacing: 10px;
 }
 
-.btn-custom {
-  background-color: $white;
-  border: 1px solid darken($gray20, 5%);
-  border-radius: 5px;
-  color: darken($gray20, 5%);
-  font-family: "Ubuntu", sans-serif;
 
-  &:hover {
-    background-color: darken($gray20, 5%);
-    color: $white;
-    text-decoration: none;
-    transition: .5s;
-  }
-}
 
-.btn-custom2 {
-  background-color: $white;
-  border: 1px solid $black;
-  border-radius: 5px;
-  color: $gray20;
-  font-family: "Ubuntu", sans-serif;
-  padding: 8px 20px;
-
-  &:hover {
-    background-color: $gray20;
-    color: $white;
-    text-decoration: none;
-    transition: .5s;
-  }
-}
 
 .links {
 
@@ -295,34 +290,7 @@ h2 {
   }
 }
 
-.post {
-  @include background-tile;
 
-  .post-title {
-    font-size: 2em;
-    margin-top: 0;
-  }
-
-  .post-content {
-    border-bottom: 1px solid $white20;
-    border-top: 1px solid $white20;
-    font-size: 1.05em;
-    line-height: 1.5;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding: 10px 0;
-  }
-
-  .timestamp {
-    color: $light-gray;
-    font-size: 12px;
-  }
-
-}
-
-.image-user {
-  width: 50px;
-}
 
 .post-form {
   @include background-tile;
@@ -345,4 +313,24 @@ h2 {
   &:last-child {
     border-bottom: 0;
   }
+}
+
+
+.style-featured {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.style-featured > div > div {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 10px;
+  transition: .1s;
+}
+
+.style-featured > div:hover > div {
+  background: rgba(153, 200, 250, 0.1);
+  border: 1px solid rgb(153, 200, 250);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 9px 9px 9px;
+  transition: .99s;
 }

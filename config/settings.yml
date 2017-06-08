@@ -4,3 +4,5 @@ color:
   dark_blue: "#00008B"
 post_description:
   length_100: 100
+comments:
+  depth_limit: 2

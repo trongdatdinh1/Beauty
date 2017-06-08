@@ -1,26 +1,19 @@
-<div id="form-comment<%= post.id %>">
+<div id="form-comment<%= comment.id %>">
   <div class="row">
-    <div class="col-md-1">
+    <div class="col-md-12">
       <%= image_tag comment.user.profile.avatar.url, class: "image-user" %>
-    </div>
-    <div class="col-md-11">
       <%= link_to comment.user.profile.name, user_path(comment.user_id) %>:
       <span class="timestamp">
         <%= comment.created_at %>
       </span><br/>
       <p><%= comment.content %><p>
-      <% if can? :destroy, comment %>
-        <%= link_to t("posts.show.delete"), post_comment_path(post, comment),
-          method: :delete,
-          data: {confirm: t("posts.show.sure")} %>
-      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-11 comment-form">
+      <%= render "comments/comment_form", post: post, parent_id: comment.id,
+        comment_new: comment_new %>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-11">
-    <%= render "comments/comment_form", post: post, parent_id: comment.id,
-      comment_new: comment_new %>
-  </div>
-</div>
+

@@ -46,4 +46,8 @@ class Supports::Post
   def comments_tree
     @comments = @post.comments
   end
+
+  def search
+    search = Post.search(params[:q])
+  end
 end

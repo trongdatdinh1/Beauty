@@ -12,4 +12,13 @@ module CommentsHelper
         comments_tree_for(nested_comments, post, Comment.new), class: "replies"
     end
   end
+
+  def check_depth parent_id
+    if parent_id
+      comment = Comment.find_by id: parent_id
+      comment.depth
+    else
+      0
+    end
+  end
 end

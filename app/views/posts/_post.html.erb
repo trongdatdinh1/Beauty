@@ -1,21 +1,24 @@
-<div class="show-post col-md-3">
-  <div class="row">
-    <div class="col-md-12 <%= "sold" if post.closed? %>">
-      <%= link_to image_tag(post.post_img.url,
-        class: "post-image #{'watermark' if post.closed?}"), post_path(post) %>
-    </div>
-    <div class="col-md-12">
-      <h3><%= link_to post.title, post_path(post.id) %></h3>
-        <%= t "posts.post.by" %>
-      <span><%= link_to post.user.profile.name,
-        user_path(post.user_id) %></span>
-      <p><%= t "posts.show.tag" %>
-        <%= raw tag_list post %>
-      </p>
-      <p class="post-content"><%= truncate (strip_tags post.content),
-        length: Settings.post_description.length_100 %></p>
-      <p><%= link_to t("posts.post.read"), post_path(post.id),
-        class: "btn btn-custom" %></p>
+<div class="col-sm-3">
+  <div class="col-item">
+      <div class="photo">
+        <div class="<%= "sold" if post.closed? %>">
+          <%= link_to image_tag(post.post_img.url,
+            class: "post-image img-responsive #{'watermark' if post.closed?}"),
+            post_path(post) %>
+        </div>
+      </div>
+      <div class="info">
+        <div class="separator clear-left">
+          <p class="btn-add">
+          <h5><%= link_to post.title, post_path(post.id) %></h5>
+            <%= post.impressionist_count %>views
+          </p>
+          <p class="btn-details">
+            <h5 class="price-text-color">$<%= post.price %></h5>
+          </p>
+        </div>
+          <div class="clearfix">
+        </div>
     </div>
   </div>
 </div>

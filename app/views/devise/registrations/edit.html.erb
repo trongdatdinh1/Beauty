@@ -45,6 +45,8 @@
         <div class="form-group">
           <%= f.label :age %>
           <%= p.number_field :age,
+            min: 1,
+            max: 100,
             placeholder: t("devise.registrations.age"),
             class: "form-control" %>
         </div>
@@ -80,5 +82,4 @@
         </div>
     </div>
   <% end %>
-  <%= render "devise/shared/links" %>
 </div>

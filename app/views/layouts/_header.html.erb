@@ -32,15 +32,20 @@
           <% end %>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
+              <li><%= link_to t("layouts.header.chat"), chat_index_path %></li>
               <li class="dropdown notification-dropdown">
                 <%= render "notifications/notifications" %>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <%= t "layouts.header.user" %>
+                  <%= current_user.profile.name %>
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
+                  <% if current_user.admin_role %>
+                    <li><%= link_to t("layouts.header.admin"),
+                      admin_users_path %></li>
+                  <% end %>
                   <li><%= link_to t("layouts.header.post"),
                     posts_path %></li>
                   <li><%= link_to t("layouts.header.profile"),

@@ -5,13 +5,11 @@ class PostsController < ApplicationController
 
   def index
     @posts =
-      if user_signed_in? && params[:tag].nil? && params[:query].nil?
+      if user_signed_in? && params[:tag].nil?
         current_user.posts.order_by_created.page(params[:page]).per(20)
       elsif params[:tag]
         Post.all.tagged_with(params[:tag])
           .order_by_created.page(params[:page]).per(20)
-      elsif params[:query]
-        Post.search params[:query], page: params[:page]
       else
         Post.all.order_by_created.page(params[:page]).per(20)
       end
@@ -31,6 +29,8 @@ class PostsController < ApplicationController
 
   def show
     @supports = Supports::Post.new @post
+    @conversation = Conversation.where(sender_id: current_user.id,
+      recipient_id: @post.user.id).first
     impressionist @post
   end
 
@@ -53,6 +53,6 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit :title,
-      :content, :post_img, :tag_list, :status
+      :content, :post_img, :tag_list, :status, :price
   end
 end

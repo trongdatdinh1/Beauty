@@ -1,0 +1,19 @@
+<div class="modal fade" id="edit-post-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"></button>
+        <h4 class="modal-title"><%= t "posts.show.edit" %></h4>
+      </div>
+      <div class="modal-body">
+        <%= render "posts/post_form", post: post %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <%= t "close" %>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

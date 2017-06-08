@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607234820) do
+ActiveRecord::Schema.define(version: 20170614143456) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20170607234820) do
     t.integer  "parent_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.integer  "sender_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
   create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type"
     t.integer  "impressionable_id"
@@ -68,6 +78,16 @@ ActiveRecord::Schema.define(version: 20170607234820) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "notified_by_id"
@@ -87,14 +107,16 @@ ActiveRecord::Schema.define(version: 20170607234820) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
     t.string   "post_img_file_name"
     t.string   "post_img_content_type"
     t.integer  "post_img_file_size"
     t.datetime "post_img_updated_at"
-    t.integer  "status",                default: 0, null: false
+    t.integer  "status",                default: 0,     null: false
+    t.decimal  "price",                 default: "0.0"
+    t.integer  "quantity",              default: 1
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -160,6 +182,11 @@ ActiveRecord::Schema.define(version: 20170607234820) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.boolean  "admin_role",             default: false
     t.boolean  "user_role",              default: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

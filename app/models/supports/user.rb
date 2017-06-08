@@ -19,6 +19,10 @@ class Supports::User
     @reviews ||= Review.where reviewed_id: @user.id
   end
 
+  def reviewed_users
+    @reviewed_users ||= Review.where user_id: @user.id
+  end
+
   def average_review
     @average_review =
       if reviews.empty?
@@ -41,5 +45,16 @@ class Supports::User
   def check_review reviewer, reviewed
     @check_review ||= Review.find_by user_id: reviewer.id,
       reviewed_id: reviewed.id
+  end
+
+  def user_commented
+    post_ids = Comment.select("post_id").where(user_id: @user)
+    @commented_posts = Post.where id: post_ids
+  end
+
+  def follow_chat_list
+    posts = @user.find_up_voted_items
+    user_ids = posts.map(&:user_id).uniq
+    @user_chat_list = User.where(id: user_ids)
   end
 end

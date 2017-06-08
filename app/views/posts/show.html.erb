@@ -1,57 +1,86 @@
-<div class="row">
+<div class="row show-post">
   <div class="col-md-4">
     <div class="row">
-      <center>
-        <div class="row <%= "sold" if @post.closed? %>">
-          <%= image_tag @post.post_img.url(:post_show),
-            class: "post-image #{'watermark' if @post.closed?}" %>
+      <div class="thumbnail">
+        <center>
+          <div class="<%= "sold" if @post.closed? %>">
+            <%= image_tag @post.post_img.url,
+              class: "post-image #{'watermark' if @post.closed?}" %>
+          </div>
+          <div class="links btn-group">
+            <% if can? :update, @post  %>
+              <%= link_to t("posts.show.back"),
+                posts_path, class: "btn btn-primary" %>
+              <%= link_to t("posts.show.edit"), "",
+                "data-toggle": "modal", "data-target": "#edit-post-modal",
+                class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to t("posts.show.back"), root_path,
+                class: "btn btn-primary" %>
+            <% end %>
+            <% if can? :destroy, @post %>
+              <%= link_to t("posts.show.delete"),
+                post_path(@post), method: :delete,
+                data: {confirm: t("posts.show.sure")},
+                class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </center>
+      </div>
+    </div>
+    <div class="row">
+      <% if user_signed_in? %>
+        <div class="panel-body">
+          <ul>
+            <li><%= link_to @post.user.email, conversations_path(user_id: @post.user_id),
+              remote: true, method: :post %></li>
+          </ul>
         </div>
-        <div class="links btn-group">
-          <% if can? :update, @post  %>
-            <%= link_to t("posts.show.back"),
-              posts_path, class: "btn btn-custom" %>
-            <%= link_to t("posts.show.edit"), edit_post_path(@post),
-              class: "btn btn-custom" %>
-          <% else %>
-            <%= link_to t("posts.show.back"), root_path,
-              class: "btn btn-custom" %>
-          <% end %>
-          <% if can? :destroy, @post %>
-            <%= link_to t("posts.show.delete"),
-              post_path(@post), method: :delete,
-              data: {confirm: t("posts.show.sure")},
-              class: "btn btn-custom" %>
-          <% end %>
-        </div>
-      </center>
+        <% if @conversation %>
+          <ul id="conversations-list">
+            <%= render "conversations/conversation",
+              conversation: @conversation, user: current_user %>
+          </ul>
+        <% end %>
+      <% end %>
     </div>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-6 col-md-push-1">
     <div class="post">
       <div>
-        <h3 class="post-title"><%= @post.title %></h3>
-        <h5 class="post-owner"><span class="glyphicon glyphicon-user"></span>
+        <center>
+          <h2 class="post-title"><%= @post.title %></h2>
+        </center>
+        <h3 class="post-owner"><span class="glyphicon glyphicon-user"></span>
           <%= link_to @post.user.profile.name, user_path(@post.user_id) %>
-        </h5>
+          (registered <%= @post.user.profile.created_at %> ago)
+        </h3>
         <h6 class="timestamp">
           <span class="glyphicon glyphicon-hourglass"></span>
-          <%= @post.created_at.to_s %>
+          <%= @post.created_at.to_date %>
         </h6>
         <p class="post-tag"><%= t "posts.show.tag" %>
           <%= raw tag_list @post %>
         </p>
-        <%= render "close_post", post: @post %>
+        <h4>$<%= @post.price %></h4>
       </div>
+      <%= render "report_form", post: @post %>
+      <h4><%= @post.impressionist_count %> views</h4>
       <%= render "vote_form", post: @post %>
+      <% if can? :update, @post  %>
+        <%= render "close_post", post: @post %>
+      <% end %>
       <p class="post-content"><%= raw @post.content %></p>
     </div>
   </div>
 </div>
 <hr/>
+<%= render "report_form", post: @post %>
 <div class="row">
   <% if user_signed_in? %>
     <%= render "comments/comment_form", post: @post, parent_id: nil,
       comment_new: @supports.comment %>
+    <%= render "posts/edit_post_modal", post: @post  %>
   <% end %>
   <%= comments_tree_for @supports.comments_tree.hash_tree(limit_depth: 3),
     @post, @supports.comment %>

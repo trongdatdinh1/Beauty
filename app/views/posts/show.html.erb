@@ -48,6 +48,7 @@
   </div>
 </div>
 <hr/>
+<%= render "report_form", post: @post %>
 <div class="row">
   <% if user_signed_in? %>
     <%= render "comments/comment_form", post: @post, parent_id: nil,

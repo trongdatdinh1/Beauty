@@ -1,0 +1,13 @@
+<div id="report_form">
+  <% if user_signed_in? %>
+    <% if current_user.voted_down_on? post, vote_scope: "report" %>
+      Reported
+    <% else %>
+      <%= link_to post_reports_path(post), method: :post, remote: true,
+        data: {confirm: t("admin.posts.index.sure?")} do %>
+        Rep
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= @post.get_downvotes(vote_scope: "report").size %>
+</div>

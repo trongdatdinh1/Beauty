@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :votes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    resources :reports, only: [:create, :destroy]
   end
 
   get "tags/:tag", to: "posts#index", as: :tag
@@ -22,4 +23,6 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: [:index, :show]
+
+  get "*path", to: redirect("/")
 end

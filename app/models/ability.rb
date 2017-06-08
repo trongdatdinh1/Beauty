@@ -35,7 +35,7 @@ class Ability
     can [:create, :read, :destroy], Post
     can [:edit, :update], Post, user_id: user.id
     can [:create, :destroy], Comment
-    can [:read], Review
+    can [:read], [Review, User]
   end
 
   def user_role user

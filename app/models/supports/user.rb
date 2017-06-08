@@ -16,15 +16,15 @@ class Supports::User
   end
 
   def reviews
-    @reviews = Review.where reviewed_id: @user.id
+    @reviews ||= Review.where reviewed_id: @user.id
   end
 
   def average_review
     @average_review =
-      if reviews
-        reviews.average(:star).round(2)
-      else
+      if reviews.empty?
         0
+      else
+        reviews.average(:star).round(2)
       end
   end
 

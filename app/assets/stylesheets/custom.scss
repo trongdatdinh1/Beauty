@@ -23,6 +23,10 @@ body {
   color: $light-gray;
 }
 
+.main {
+  padding-top: 50px;
+}
+
 .carousel-inner img {
   margin: auto;
   width: 100%;
@@ -42,13 +46,11 @@ body {
   width: 100%;
 }
 
-
 @media (max-width: 768px) {
   .image-logo {
     width: 50px;
   }
 }
-
 
 .modal-header,
 h4,
@@ -94,7 +96,6 @@ h4,
   transition: .2s;
 }
 
-
 .btn:hover,
 .btn:focus {
   background-color: $white;
@@ -107,7 +108,6 @@ h4,
 }
 
 .dropdown-menu li a {
-
   &:hover {
     background-color: $fandango !important;
     color: $white;
@@ -126,6 +126,46 @@ h4,
   .review-by-user {
     margin-left: 15px;
   }
+}
+
+.user-profile-post {
+  .post-image {
+    height: 200px;
+    width: 100%;
+  }
+}
+
+.show-post {
+  .post-image {
+    height: 300px;
+    min-height: 100%;
+    width: 100%;
+  }
+
+  .post-content {
+    height: 100px;
+  }
+}
+
+.notification input {
+  background: $white;
+  border: 0;
+}
+
+.unread {
+  background-color: $noti-not-read;
+
+  a:hover,
+  a:focus,
+  a:active {
+    background-color: $noti-not-read-hover;
+  }
+}
+
+.scroll {
+  height: 400px;
+  overflow: scroll;
+  width: 350px;
 }
 
 .person {
@@ -217,7 +257,6 @@ h2 {
   &:hover {
     background-color: darken($gray20, 5%);
     color: $white;
-    padding: 8px 20px;
     text-decoration: none;
     transition: .5s;
   }
@@ -254,23 +293,6 @@ h2 {
     margin-top: 40px;
     padding: 3px 10px;
   }
-}
-
-.show {
-  border-bottom: 1px solid $white20;
-
-  .post-show {
-    @include background-tile;
-    height: 300px;
-    width: 325px;
-  }
-}
-
-.post-image {
-  @include background-tile;
-  height: 400px;
-  margin-bottom: 20px;
-  width: 300px;
 }
 
 .post {
@@ -311,8 +333,6 @@ h2 {
   @include background-tile;
 }
 
-
-
 .image-edit-profile {
   height: 300px;
   width: 100%;
@@ -325,25 +345,4 @@ h2 {
   &:last-child {
     border-bottom: 0;
   }
-}
-
-.notification input {
-  background: $white;
-  border: 0;
-}
-
-.unread {
-  background-color: $noti-not-read;
-
-  a:hover,
-  a:focus,
-  a:active {
-    background-color: $noti-not-read-hover;
-  }
-}
-
-.scroll {
-  height: 400px;
-  overflow: scroll;
-  width: 350px;
 }

@@ -1,0 +1,17 @@
+<% posts.each do |post| %>
+  <div class="row user-profile-post">
+    <div class="col-xs-4 col-sm-4 col-md-4 <%= "sold" if post.closed? %>">
+      <%= link_to image_tag(post.post_img.url,
+        class: "post-image #{'watermark' if post.closed?}"), post_path(post) %>
+    </div>
+    <div class="col-sm-9 col-md-8">
+      <h2><%= link_to post.title, post_path(post.id) %></h2>
+      <p><%= t "posts.show.tag" %>
+        <%= raw tag_list post %>
+      </p>
+      <p><%= truncate post.content, length: 80 %></p>
+      <p><%= link_to t("posts.post.read"), post_path(post.id),
+        class: "btn btn-custom" %></p>
+    </div>
+  </div>
+<% end %>

@@ -52,14 +52,7 @@ body {
   }
 }
 
-.modal-header,
-h4,
-.close {
-  background-color: $fandango;
-  color: $white !important;
-  font-size: 30px;
-  text-align: center;
-}
+
 
 .modal-header,
 .modal-body {
@@ -136,6 +129,8 @@ h4,
 }
 
 .show-post {
+  border: 1px solid #ebebeb;
+
   .post-image {
     height: 300px;
     min-height: 100%;

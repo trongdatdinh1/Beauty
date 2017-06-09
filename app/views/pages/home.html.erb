@@ -1,43 +1,5 @@
 <% provide :title, t("pages.home.beauty") %>
-<div id="myCarousel" class="carousel slide row" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <%= link_to image_tag("1.jpg") %>
-      <div class="carousel-caption">
-        <h3>Elizabeth Arden</h3>
-        <p><%= t "pages.home.every" %></p>
-      </div>
-    </div>
-    <div class="item">
-      <%= link_to image_tag("2.jpg") %>
-      <div class="carousel-caption">
-        <h3>Audrey Hepburn</h3>
-        <p><%= t "pages.home.makeup" %></p>
-      </div>
-    </div>
-    <div class="item">
-      <%= link_to image_tag("3.jpg") %>
-      <div class="carousel-caption">
-        <h3>Coco Chanel</h3>
-        <p><%= t "pages.home.be" %></p>
-      </div>
-    </div>
-  </div>
 
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only"></span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only"></span>
-  </a>
-</div>
 <div class="row">
   <%= render @posts %>
   <%= paginate @posts %>

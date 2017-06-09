@@ -1,32 +1,43 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6 col-md-offset-1">
     <div class="row">
-      <center>
-        <div class="row <%= "sold" if @post.closed? %>">
-          <%= image_tag @post.post_img.url(:post_show),
-            class: "post-image #{'watermark' if @post.closed?}" %>
+      <div class="thumbnail">
+        <center>
+          <div class="<%= "sold" if @post.closed? %>">
+            <%= image_tag @post.post_img.url,
+              class: "post-image #{'watermark' if @post.closed?}" %>
+          </div>
+          <div class="links btn-group">
+            <% if can? :update, @post  %>
+              <%= link_to t("posts.show.back"),
+                posts_path, class: "btn btn-custom" %>
+              <%= link_to t("posts.show.edit"), edit_post_path(@post),
+                class: "btn btn-custom" %>
+            <% else %>
+              <%= link_to t("posts.show.back"), root_path,
+                class: "btn btn-custom" %>
+            <% end %>
+            <% if can? :destroy, @post %>
+              <%= link_to t("posts.show.delete"),
+                post_path(@post), method: :delete,
+                data: {confirm: t("posts.show.sure")},
+                class: "btn btn-custom" %>
+            <% end %>
+          </div>
+        </center>
+        <div class="caption-full">
+          <h4 class="pull-right">$24.99</h4>
+          <h4 class="post-title"><%= @post.title %></h4>
         </div>
-        <div class="links btn-group">
-          <% if can? :update, @post  %>
-            <%= link_to t("posts.show.back"),
-              posts_path, class: "btn btn-custom" %>
-            <%= link_to t("posts.show.edit"), edit_post_path(@post),
-              class: "btn btn-custom" %>
-          <% else %>
-            <%= link_to t("posts.show.back"), root_path,
-              class: "btn btn-custom" %>
-          <% end %>
-          <% if can? :destroy, @post %>
-            <%= link_to t("posts.show.delete"),
-              post_path(@post), method: :delete,
-              data: {confirm: t("posts.show.sure")},
-              class: "btn btn-custom" %>
-          <% end %>
+        <div>
+          <p class="pull-right"><%= @post.impressionist_count %> views</p>
+          <p> Reported</p>
         </div>
-      </center>
+        <p class="post-content"><%= raw @post.content %></p>
+      </div>
     </div>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-4">
     <div class="post">
       <div>
         <h3 class="post-title"><%= @post.title %></h3>
@@ -42,13 +53,13 @@
         </p>
         <%= render "close_post", post: @post %>
       </div>
+      <%= render "report_form", post: @post %>
+      <p><%= @post.impressionist_count %> views</p>
       <%= render "vote_form", post: @post %>
-      <p class="post-content"><%= raw @post.content %></p>
     </div>
   </div>
 </div>
 <hr/>
-<%= render "report_form", post: @post %>
 <div class="row">
   <% if user_signed_in? %>
     <%= render "comments/comment_form", post: @post, parent_id: nil,

@@ -1,28 +1,22 @@
 <h1><%= t "admin.users.index.users" %></h1>
-<div class="sidebar-nav">
-  <div class="well">
-    <ul class="nav nav-list">
-      <li class="nav-header"><%= t "admin.users.index.admin_menu" %></li>
-      <li>
-        <%= link_to t("admin.users.index.users"), admin_users_path %>
-      </li>
-      <li>
-        <%= link_to t("admin.users.index.posts"), admin_posts_path %>
-      </li>
-    </ul>
+<div class="row">
+  <div class="col-sm-3 col-lg-2 col-lg-pull-1">
+    <%= render "admin/shared/side_nav" %>
   </div>
-</div>
-<div class="row">
-  <%= paginate @users %>
-  <%= render "users_table", users: @users,
-    caption: t("admin.posts.index.post_list") %>
-  <%= paginate @users %>
-</div>
-<div class="row">
-  <center><h2><%= t "last_7_days" %></h2></center>
-  <%= column_chart @supports.last_7_days %>
-</div>
-<div class="row">
-  <center><h2><%= t "last_6_months" %></h2></center>
-  <%= column_chart @supports.last_6_months %>
+  <div class="col-sm-9 col-lg-10">
+    <div class="row">
+      <%= paginate @users %>
+      <%= render "users_table", users: @users,
+        caption: t("admin.posts.index.post_list") %>
+      <%= paginate @users %>
+    </div>
+    <div class="row">
+      <center><h2><%= t "last_7_days" %></h2></center>
+      <%= column_chart @supports.last_7_days %>
+    </div>
+    <div class="row">
+      <center><h2><%= t "last_6_months" %></h2></center>
+      <%= column_chart @supports.last_6_months %>
+    </div>
+  </div>
 </div>

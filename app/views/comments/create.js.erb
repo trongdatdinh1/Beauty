@@ -1,2 +1,10 @@
-$('#form-comment<%= @comment.post_id %>').append("<%= j render(@comment) %>");
+<% if @comment.parent_id %>
+  $('#form-comment<%= @comment.parent_id %>')
+    .append("<%= j render(@comment, post: @post, comment_new: Comment.new) %>");
+  $('#form-comment<%= @comment.id %>')
+    .wrap("<div class='replies'></div>");
+<% else %>
+  $('#form-comment<%= @comment.parent_id %>')
+    .append("<%= j render(@comment, post: @post, comment_new: Comment.new) %>");
+<% end %>
 $('#form-comment form textarea').val('');

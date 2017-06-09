@@ -1,21 +1,17 @@
-<div class="show-post col-md-3">
-  <div class="row">
-    <div class="col-md-12 <%= "sold" if post.closed? %>">
+<div class="col-sm-4 col-lg-3 col-md-4 post">
+  <div>
+    <div class="<%= "sold" if post.closed? %>">
       <%= link_to image_tag(post.post_img.url,
-        class: "post-image #{'watermark' if post.closed?}"), post_path(post) %>
+        class: "post-image img-responsive #{'watermark' if post.closed?}"),
+        post_path(post) %>
     </div>
-    <div class="col-md-12">
-      <h3><%= link_to post.title, post_path(post.id) %></h3>
-        <%= t "posts.post.by" %>
-      <span><%= link_to post.user.profile.name,
-        user_path(post.user_id) %></span>
-      <p><%= t "posts.show.tag" %>
-        <%= raw tag_list post %>
-      </p>
-      <p class="post-content"><%= truncate (strip_tags post.content),
-        length: Settings.post_description.length_100 %></p>
-      <p><%= link_to t("posts.post.read"), post_path(post.id),
-        class: "btn btn-custom" %></p>
+    <h4><%= link_to post.title, post_path(post.id) %></h4>
+    <div class="caption">
+      <p>$24.99</p>
+    </div>
+    <div class="ratings">
+      <p><%= post.impressionist_count %>views</p>
+      <p><%= post.get_likes.size %> likes</p>
     </div>
   </div>
 </div>
